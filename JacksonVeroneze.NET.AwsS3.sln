@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{23A5E02B-40B5-4C0E-8D86-F9B63CCD0247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JacksonVeroneze.NET.AwsS3", "src\JacksonVeroneze.NET.AwsS3\JacksonVeroneze.NET.AwsS3.csproj", "{FC374FDF-64EA-4616-BFB0-568AE828AA1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{561F0598-BF69-44DE-AA92-B49C5F7EF5DE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		global.json = global.json
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3B10BB11-EFE7-432C-A48A-50E6B3E6E050}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{100F48B6-5172-4CB1-A4EC-D0DAA7844DD0}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\run-unit-tests.yaml = .github\workflows\run-unit-tests.yaml
+		.github\workflows\run-commit-linter.yml = .github\workflows\run-commit-linter.yml
+		.github\workflows\run-create-package.yml = .github\workflows\run-create-package.yml
+		.github\workflows\run-pr-assign.yml = .github\workflows\run-pr-assign.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC374FDF-64EA-4616-BFB0-568AE828AA1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC374FDF-64EA-4616-BFB0-568AE828AA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC374FDF-64EA-4616-BFB0-568AE828AA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC374FDF-64EA-4616-BFB0-568AE828AA1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC374FDF-64EA-4616-BFB0-568AE828AA1A} = {23A5E02B-40B5-4C0E-8D86-F9B63CCD0247}
+		{100F48B6-5172-4CB1-A4EC-D0DAA7844DD0} = {561F0598-BF69-44DE-AA92-B49C5F7EF5DE}
+	EndGlobalSection
+EndGlobal
