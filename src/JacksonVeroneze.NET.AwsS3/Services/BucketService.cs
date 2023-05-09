@@ -6,9 +6,6 @@ using JacksonVeroneze.NET.AwsS3.Extensions;
 using JacksonVeroneze.NET.AwsS3.Interfaces;
 using JacksonVeroneze.NET.AwsS3.Models.Bucket;
 using Microsoft.Extensions.Logging;
-using DeleteBucketRequest = JacksonVeroneze.NET.AwsS3.Models.Bucket.DeleteBucketRequest;
-using DeleteBucketRequestAws = Amazon.S3.Model.DeleteBucketRequest;
-
 
 namespace JacksonVeroneze.NET.AwsS3.Services;
 
@@ -25,8 +22,8 @@ public class BucketService : IBucketService
         _s3Client = s3Client;
     }
 
-    public async Task<ICollection<Bucket>> GetPagedAsync(
-        BucketPagedRequest request,
+    public async Task<ICollection<AwsBucket>> GetAllAsync(
+        BucketAllRequest request,
         CancellationToken cancellationToken = default)
     {
         ListBucketsRequest requestAws = new();
@@ -34,13 +31,13 @@ public class BucketService : IBucketService
         ListBucketsResponse result = await _s3Client
             .ListBucketsAsync(requestAws, cancellationToken);
 
-        ICollection<Bucket> buckets =
-            result.Buckets.Select(bucket => new Bucket(
+        ICollection<AwsBucket> buckets =
+            result.Buckets.Select(bucket => new AwsBucket(
                     bucket.BucketName, bucket.CreationDate))
                 .ToArray();
 
-        _logger.LogGetPaged(nameof(BucketService),
-            nameof(GetPagedAsync), buckets.Count);
+        _logger.LogGetAll(nameof(BucketService),
+            nameof(GetAllAsync), buckets.Count);
 
         return buckets;
     }
@@ -63,10 +60,10 @@ public class BucketService : IBucketService
     }
 
     public async Task DeleteAsync(
-        DeleteBucketRequest request,
+        Models.Bucket.DeleteBucketRequest request,
         CancellationToken cancellationToken = default)
     {
-        DeleteBucketRequestAws requestAws = new()
+        Amazon.S3.Model.DeleteBucketRequest requestAws = new()
         {
             BucketName = request.Name,
             UseClientRegion = true

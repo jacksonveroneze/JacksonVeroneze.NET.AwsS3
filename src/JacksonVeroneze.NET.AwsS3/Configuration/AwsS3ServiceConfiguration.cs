@@ -1,8 +1,8 @@
 using Amazon;
 
-namespace JacksonVeroneze.NET.AwsS3.Extensions;
+namespace JacksonVeroneze.NET.AwsS3.Configuration;
 
-public sealed class AwsS3ServiceConfig
+public sealed class AwsS3ServiceConfiguration
 {
     public bool LocalMode { get; init; }
 

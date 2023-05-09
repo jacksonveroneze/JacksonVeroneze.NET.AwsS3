@@ -6,8 +6,8 @@ namespace JacksonVeroneze.NET.AwsS3.Interfaces;
 
 public interface IBucketService
 {
-    Task<ICollection<Bucket>> GetPagedAsync(
-        BucketPagedRequest request,
+    Task<ICollection<AwsBucket>> GetAllAsync(
+        BucketAllRequest request,
         CancellationToken cancellationToken = default);
     
     Task CreateAsync(

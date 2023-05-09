@@ -1,12 +1,12 @@
 namespace JacksonVeroneze.NET.AwsS3.Entities;
 
-public class FileObject
+public class AwsObject
 {
     public string Name { get; }
 
     public string Url { get; }
 
-    public FileObject(string name, string url)
+    public AwsObject(string name, string url)
     {
         Name = name;
         Url = url;

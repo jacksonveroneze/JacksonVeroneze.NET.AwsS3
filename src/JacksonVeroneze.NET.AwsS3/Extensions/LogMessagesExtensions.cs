@@ -14,7 +14,7 @@ public static partial class LogMessagesExtensions
         EventId = 2000,
         Level = LogLevel.Debug,
         Message = "{className} - {methodName} - GetPaged - Count: {count}")]
-    public static partial void LogGetPaged(this ILogger logger,
+    public static partial void LogGetAll(this ILogger logger,
         string className, string methodName, 
         int count);
 

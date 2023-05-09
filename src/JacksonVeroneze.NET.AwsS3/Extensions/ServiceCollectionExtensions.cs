@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Amazon.S3;
+using JacksonVeroneze.NET.AwsS3.Configuration;
 using JacksonVeroneze.NET.AwsS3.Interfaces;
 using JacksonVeroneze.NET.AwsS3.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,9 +12,9 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddAwsS3Service(
         this IServiceCollection services,
-        Action<AwsS3ServiceConfig> config)
+        Action<AwsS3ServiceConfiguration> config)
     {
-        AwsS3ServiceConfig conf = new();
+        AwsS3ServiceConfiguration conf = new();
 
         config.Invoke(conf);
 

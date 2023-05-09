@@ -6,11 +6,11 @@ namespace JacksonVeroneze.NET.AwsS3.Interfaces;
 
 public interface IObjectService
 {
-    Task<ICollection<FileObject>> GetPagedAsync(
-        ObjectPagedRequest request,
+    Task<ICollection<AwsObject>> GetAllAsync(
+        ObjectAllRequest request,
         CancellationToken cancellationToken = default);
 
-    Task<FileObject> GetByIdAsync(
+    Task<AwsObject> GetByIdAsync(
         GetObjectByIdRequest request,
         CancellationToken cancellationToken = default);
 

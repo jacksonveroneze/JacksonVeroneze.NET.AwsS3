@@ -19,22 +19,30 @@ public class ObjectService : IObjectService
         _s3Client = s3Client;
     }
 
-    public Task<ICollection<FileObject>> GetPagedAsync(ObjectPagedRequest request, CancellationToken cancellationToken = default)
+    public Task<ICollection<AwsObject>> GetAllAsync(
+        ObjectAllRequest request, 
+        CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<FileObject> GetByIdAsync(GetObjectByIdRequest request, CancellationToken cancellationToken = default)
+    public Task<AwsObject> GetByIdAsync(
+        GetObjectByIdRequest request, 
+        CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task CreateAsync(CreateObjectRequest request, CancellationToken cancellationToken = default)
+    public Task CreateAsync(
+        CreateObjectRequest request, 
+        CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(DeleteObjectRequest request, CancellationToken cancellationToken = default)
+    public Task DeleteAsync(
+        DeleteObjectRequest request, 
+        CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
