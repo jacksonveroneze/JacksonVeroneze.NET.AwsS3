@@ -15,7 +15,7 @@ public static partial class LogMessagesExtensions
         Level = LogLevel.Debug,
         Message = "{className} - {methodName} - GetPaged - Count: {count}")]
     public static partial void LogGetAll(this ILogger logger,
-        string className, string methodName, 
+        string className, string methodName,
         int count);
 
     [LoggerMessage(

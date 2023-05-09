@@ -1,6 +1,5 @@
 namespace JacksonVeroneze.NET.AwsS3.Models.Bucket;
 
-public class BucketAllRequest
+public class GetAllAwsBucketRequest
 {
-
 }

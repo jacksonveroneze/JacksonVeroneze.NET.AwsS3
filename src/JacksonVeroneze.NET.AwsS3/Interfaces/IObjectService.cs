@@ -1,5 +1,4 @@
 using JacksonVeroneze.NET.AwsS3.Entities;
-using JacksonVeroneze.NET.AwsS3.Models;
 using JacksonVeroneze.NET.AwsS3.Models.Object;
 
 namespace JacksonVeroneze.NET.AwsS3.Interfaces;
@@ -7,18 +6,18 @@ namespace JacksonVeroneze.NET.AwsS3.Interfaces;
 public interface IObjectService
 {
     Task<ICollection<AwsObject>> GetAllAsync(
-        ObjectAllRequest request,
+        GetAllAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 
     Task<AwsObject> GetByIdAsync(
-        GetObjectByIdRequest request,
+        GetByIdAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 
     Task CreateAsync(
-        CreateObjectRequest request,
+        CreateAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 
     Task DeleteAsync(
-        DeleteObjectRequest request,
+        DeleteAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 }

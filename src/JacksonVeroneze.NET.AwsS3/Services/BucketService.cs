@@ -23,7 +23,7 @@ public class BucketService : IBucketService
     }
 
     public async Task<ICollection<AwsBucket>> GetAllAsync(
-        BucketAllRequest request,
+        GetAllAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
         ListBucketsRequest requestAws = new();
@@ -43,7 +43,7 @@ public class BucketService : IBucketService
     }
 
     public async Task CreateAsync(
-        CreateBucketRequest request,
+        CreateAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
         PutBucketRequest requestAws = new()
@@ -60,10 +60,10 @@ public class BucketService : IBucketService
     }
 
     public async Task DeleteAsync(
-        Models.Bucket.DeleteBucketRequest request,
+        DeleteAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
-        Amazon.S3.Model.DeleteBucketRequest requestAws = new()
+        DeleteBucketRequest requestAws = new()
         {
             BucketName = request.Name,
             UseClientRegion = true

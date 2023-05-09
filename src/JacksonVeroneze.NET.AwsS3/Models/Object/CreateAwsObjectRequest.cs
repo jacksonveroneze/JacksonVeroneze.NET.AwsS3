@@ -1,6 +1,6 @@
 namespace JacksonVeroneze.NET.AwsS3.Models.Object;
 
-public class CreateObjectRequest
+public class CreateAwsObjectRequest
 {
     public string BucketName { get; }
 
@@ -12,15 +12,9 @@ public class CreateObjectRequest
 
     public IDictionary<string, string> Metadata { get; }
 
-    public string FullPath
-    {
-        get
-        {
-            return $"{Prefix}/{Name}";
-        }
-    }
+    public string FullPath => $"{Prefix}/{Name}";
 
-    public CreateObjectRequest(string bucketName,
+    public CreateAwsObjectRequest(string bucketName,
         string prefix, string name, string content,
         IDictionary<string, string> metadata)
     {

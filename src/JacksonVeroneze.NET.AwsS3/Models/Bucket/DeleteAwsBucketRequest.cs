@@ -1,10 +1,10 @@
 namespace JacksonVeroneze.NET.AwsS3.Models.Bucket;
 
-public class CreateBucketRequest
+public class DeleteAwsBucketRequest
 {
     public string Name { get; }
 
-    public CreateBucketRequest(string name)
+    public DeleteAwsBucketRequest(string name)
     {
         Name = name;
     }

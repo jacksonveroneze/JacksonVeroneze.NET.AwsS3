@@ -1,6 +1,6 @@
 namespace JacksonVeroneze.NET.AwsS3.Models.Object;
 
-public class ObjectAllRequest
+public class GetAllAwsObjectRequest
 {
     public string? BucketName { get; set; }
 }

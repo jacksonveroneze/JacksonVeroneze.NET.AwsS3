@@ -1,12 +1,12 @@
 namespace JacksonVeroneze.NET.AwsS3.Models.Object;
 
-public class DeleteObjectRequest
+public class DeleteAwsObjectRequest
 {
     public string BucketName { get; }
 
     public string Key { get; }
 
-    public DeleteObjectRequest(string bucketName, string key)
+    public DeleteAwsObjectRequest(string bucketName, string key)
     {
         BucketName = bucketName;
         Key = key;

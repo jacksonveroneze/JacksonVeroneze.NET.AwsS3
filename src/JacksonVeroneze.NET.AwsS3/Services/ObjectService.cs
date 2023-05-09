@@ -20,28 +20,28 @@ public class ObjectService : IObjectService
     }
 
     public Task<ICollection<AwsObject>> GetAllAsync(
-        ObjectAllRequest request, 
+        GetAllAwsObjectRequest request,
         CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
     public Task<AwsObject> GetByIdAsync(
-        GetObjectByIdRequest request, 
+        GetByIdAwsObjectRequest request,
         CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
     public Task CreateAsync(
-        CreateObjectRequest request, 
+        CreateAwsObjectRequest request,
         CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
     public Task DeleteAsync(
-        DeleteObjectRequest request, 
+        DeleteAwsObjectRequest request,
         CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
