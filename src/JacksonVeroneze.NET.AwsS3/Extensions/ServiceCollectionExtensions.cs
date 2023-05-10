@@ -26,7 +26,7 @@ public static class ServiceCollectionExtensions
                 {
                     RegionEndpoint = conf.AwsRegion,
                     ServiceURL = conf.ServiceUrl,
-                    ForcePathStyle = conf.ForcePathStyle
+                    ForcePathStyle = conf.ForcePathStyle!.Value
                 };
 
                 return new AmazonS3Client(awsS3Config);

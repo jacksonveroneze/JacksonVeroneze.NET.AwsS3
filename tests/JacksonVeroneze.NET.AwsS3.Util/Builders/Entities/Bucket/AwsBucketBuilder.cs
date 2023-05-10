@@ -13,10 +13,7 @@ public static class AwsBucketBuilder
     public static ICollection<AwsBucket> BuildMany(
         int? qtde = null)
     {
-        if (qtde is null)
-        {
-            qtde = new Random().Next(1, 100);
-        }
+        qtde ??= new Random().Next(1, 100);
 
         return Factory().Generate(qtde.Value);
     }

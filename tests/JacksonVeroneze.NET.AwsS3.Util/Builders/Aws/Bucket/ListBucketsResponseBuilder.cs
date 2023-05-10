@@ -15,6 +15,7 @@ public static class ListBucketsResponseBuilder
         int qtdBuckets)
     {
         return new Faker<ListBucketsResponse>("pt_BR")
-            .RuleFor(f => f.Buckets, S3BucketBuilder.BuildMany(qtdBuckets));
+            .RuleFor(f => f.Buckets, 
+                S3BucketBuilder.BuildMany(qtdBuckets));
     }
 }

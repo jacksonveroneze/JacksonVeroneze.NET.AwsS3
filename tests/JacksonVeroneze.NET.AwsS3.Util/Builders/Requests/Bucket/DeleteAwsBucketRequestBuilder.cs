@@ -3,7 +3,7 @@ using JacksonVeroneze.NET.AwsS3.Models.Bucket;
 namespace JacksonVeroneze.NET.AwsS3.Util.Builders.Requests.Bucket;
 
 [ExcludeFromCodeCoverage]
-public static class DeleteBucketRequestBuilder
+public static class DeleteAwsBucketRequestBuilder
 {
     public static DeleteAwsBucketRequest BuildSingle()
     {

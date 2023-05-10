@@ -45,7 +45,7 @@ public class BucketServiceTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        GetAllAwsBucketRequest request = BucketAllRequestBuilder
+        GetAllAwsBucketRequest request = GetAllAwsBucketRequestBuilder
             .BuildSingle();
 
         ListBucketsResponse expected = ListBucketsResponseBuilder
@@ -96,7 +96,7 @@ public class BucketServiceTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        CreateAwsBucketRequest request = CreateBucketRequestBuilder
+        CreateAwsBucketRequest request = CreateAwsBucketRequestBuilder
             .BuildSingle();
 
         PutBucketResponse expected = PutBucketResponseBuilder
@@ -142,7 +142,7 @@ public class BucketServiceTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        DeleteAwsBucketRequest request = DeleteBucketRequestBuilder
+        DeleteAwsBucketRequest request = DeleteAwsBucketRequestBuilder
             .BuildSingle();
 
         DeleteBucketResponse expected = DeleteBucketResponseBuilder

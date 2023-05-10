@@ -10,5 +10,5 @@ public sealed class AwsS3ServiceConfiguration
 
     public string? ServiceUrl { get; init; }
 
-    public bool ForcePathStyle { get; init; }
+    public bool? ForcePathStyle { get; init; }
 }
