@@ -18,7 +18,7 @@ public static class ServiceCollectionExtensions
 
         config.Invoke(conf);
 
-        if (conf.LocalMode)
+        if (conf.LocalMode is true)
         {
             services.AddSingleton<IAmazonS3>(_ =>
             {
@@ -34,7 +34,8 @@ public static class ServiceCollectionExtensions
         }
         else
         {
-            services.TryAddAWSService<IAmazonS3>();
+            services.TryAddAWSService<IAmazonS3>(
+                conf.AwsOptions);
         }
 
         services.AddTransient<IBucketService, BucketService>();

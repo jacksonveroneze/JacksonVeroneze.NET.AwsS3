@@ -26,6 +26,8 @@ public class BucketService : IBucketService
         GetAllAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request, nameof(request));
+       
         ListBucketsRequest requestAws = new();
 
         ListBucketsResponse result = await _s3Client
@@ -46,6 +48,10 @@ public class BucketService : IBucketService
         CreateAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request, nameof(request));
+        
+        // Validar bucket name
+        
         PutBucketRequest requestAws = new()
         {
             BucketName = request.Name,
@@ -63,6 +69,8 @@ public class BucketService : IBucketService
         DeleteAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request, nameof(request));
+        
         DeleteBucketRequest requestAws = new()
         {
             BucketName = request.Name,
@@ -78,6 +86,8 @@ public class BucketService : IBucketService
 
     public async Task<bool> ExistsAsync(string name)
     {
+        ArgumentException.ThrowIfNullOrEmpty(name, nameof(name));
+        
         bool exists = await AmazonS3Util
             .DoesS3BucketExistV2Async(_s3Client, name);
 
