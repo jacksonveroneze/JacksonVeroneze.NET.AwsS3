@@ -5,7 +5,7 @@ namespace JacksonVeroneze.NET.AwsS3.Interfaces;
 
 public interface IBucketService
 {
-    Task<ICollection<AwsBucket>> GetAllAsync(
+    Task<ICollection<S3Bucket>> GetAllAsync(
         GetAllAwsBucketRequest request,
         CancellationToken cancellationToken = default);
 

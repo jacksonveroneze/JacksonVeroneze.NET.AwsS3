@@ -19,14 +19,14 @@ public class ObjectService : IObjectService
         _s3Client = s3Client;
     }
 
-    public Task<ICollection<AwsObject>> GetAllAsync(
+    public Task<ICollection<S3Object>> GetAllAsync(
         GetAllAwsObjectRequest request,
         CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<AwsObject> GetByIdAsync(
+    public Task<S3Object> GetByIdAsync(
         GetByIdAwsObjectRequest request,
         CancellationToken cancellationToken = default)
     {

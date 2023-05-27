@@ -10,6 +10,7 @@ using JacksonVeroneze.NET.AwsS3.Util.Builders.Aws.Acl;
 using JacksonVeroneze.NET.AwsS3.Util.Builders.Aws.Bucket;
 using JacksonVeroneze.NET.AwsS3.Util.Builders.Requests.Bucket;
 using Microsoft.Extensions.Logging;
+using S3Bucket = JacksonVeroneze.NET.AwsS3.Entities.S3Bucket;
 
 namespace JacksonVeroneze.NET.AwsS3.UnitTests.Services;
 
@@ -65,7 +66,7 @@ public class BucketServiceTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        ICollection<AwsBucket> result = await _service
+        ICollection<S3Bucket> result = await _service
             .GetAllAsync(request);
 
         // -------------------------------------------------------

@@ -3,14 +3,14 @@ using JacksonVeroneze.NET.AwsS3.Entities;
 namespace JacksonVeroneze.NET.AwsS3.Util.Builders.Entities.Bucket;
 
 [ExcludeFromCodeCoverage]
-public static class AwsBucketBuilder
+public static class S3BucketBuilder
 {
-    public static AwsBucket BuildSingle()
+    public static S3Bucket BuildSingle()
     {
         return Factory().Generate();
     }
 
-    public static ICollection<AwsBucket> BuildMany(
+    public static ICollection<S3Bucket> BuildMany(
         int? qtde = null)
     {
         qtde ??= new Random().Next(1, 100);
@@ -18,9 +18,9 @@ public static class AwsBucketBuilder
         return Factory().Generate(qtde.Value);
     }
 
-    private static Faker<AwsBucket> Factory()
+    private static Faker<S3Bucket> Factory()
     {
-        return new Faker<AwsBucket>("pt_BR")
+        return new Faker<S3Bucket>("pt_BR")
             .RuleFor(f => f.Name, s => s.Random.Word())
             .RuleFor(f => f.CreatedAt, s => s.Date.Recent());
     }

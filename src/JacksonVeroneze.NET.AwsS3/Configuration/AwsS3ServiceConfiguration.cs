@@ -1,22 +1,21 @@
 using Amazon;
 using Amazon.Extensions.NETCore.Setup;
 using Dawn;
-using Guard = Dawn.Guard;
 
 namespace JacksonVeroneze.NET.AwsS3.Configuration;
 
 public sealed class AwsS3ServiceConfiguration
 {
-    public bool? LocalMode { get; init; }
+    public bool? LocalMode { get; set; }
 
     #region Run - Aws
 
-    private readonly AWSOptions? _awsOptions;
+    private AWSOptions? _awsOptions;
 
     public AWSOptions? AwsOptions
     {
         get => _awsOptions;
-        init
+        set
         {
             ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
             Guard.Argument(LocalMode).False();
@@ -29,14 +28,14 @@ public sealed class AwsS3ServiceConfiguration
 
     #region Run - LocalStack
 
-    private readonly RegionEndpoint? _awsRegion;
-    private readonly string? _serviceUrl;
-    private readonly bool? _forcePathStyle;
+    private RegionEndpoint? _awsRegion;
+    private string? _serviceUrl;
+    private bool? _forcePathStyle;
 
     public RegionEndpoint? AwsRegion
     {
         get => _awsRegion;
-        init
+        set
         {
             ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
             Guard.Argument(LocalMode).True();
@@ -48,7 +47,7 @@ public sealed class AwsS3ServiceConfiguration
     public string? ServiceUrl
     {
         get => _serviceUrl;
-        init
+        set
         {
             ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
             Guard.Argument(LocalMode).True();
@@ -60,7 +59,7 @@ public sealed class AwsS3ServiceConfiguration
     public bool? ForcePathStyle
     {
         get => _forcePathStyle;
-        init
+        set
         {
             ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
             Guard.Argument(LocalMode).True();

@@ -6,6 +6,7 @@ using JacksonVeroneze.NET.AwsS3.Extensions;
 using JacksonVeroneze.NET.AwsS3.Interfaces;
 using JacksonVeroneze.NET.AwsS3.Models.Bucket;
 using Microsoft.Extensions.Logging;
+using S3Bucket = JacksonVeroneze.NET.AwsS3.Entities.S3Bucket;
 
 namespace JacksonVeroneze.NET.AwsS3.Services;
 
@@ -22,7 +23,7 @@ public class BucketService : IBucketService
         _s3Client = s3Client;
     }
 
-    public async Task<ICollection<AwsBucket>> GetAllAsync(
+    public async Task<ICollection<S3Bucket>> GetAllAsync(
         GetAllAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
@@ -33,8 +34,8 @@ public class BucketService : IBucketService
         ListBucketsResponse result = await _s3Client
             .ListBucketsAsync(requestAws, cancellationToken);
 
-        ICollection<AwsBucket> buckets =
-            result.Buckets.Select(bucket => new AwsBucket(
+        ICollection<S3Bucket> buckets =
+            result.Buckets.Select(bucket => new S3Bucket(
                     bucket.BucketName, bucket.CreationDate))
                 .ToArray();
 

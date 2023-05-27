@@ -5,11 +5,11 @@ namespace JacksonVeroneze.NET.AwsS3.Interfaces;
 
 public interface IObjectService
 {
-    Task<ICollection<AwsObject>> GetAllAsync(
+    Task<ICollection<S3Object>> GetAllAsync(
         GetAllAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 
-    Task<AwsObject> GetByIdAsync(
+    Task<S3Object> GetByIdAsync(
         GetByIdAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 
