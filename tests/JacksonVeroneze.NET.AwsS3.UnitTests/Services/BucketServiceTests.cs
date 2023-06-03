@@ -2,7 +2,6 @@ using System.Net;
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
-using JacksonVeroneze.NET.AwsS3.Entities;
 using JacksonVeroneze.NET.AwsS3.Models.Bucket;
 using JacksonVeroneze.NET.AwsS3.Services;
 using JacksonVeroneze.NET.AwsS3.Util;

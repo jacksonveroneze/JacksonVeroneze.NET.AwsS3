@@ -1,20 +1,25 @@
 namespace JacksonVeroneze.NET.AwsS3.Models.Object;
 
-public class GetAllAwsObjectRequest
+public class GetByKeyAwsObjectRequest
 {
-    public GetAllAwsObjectRequest(
-        string bucketName,
+    private string _key;
+
+    public GetByKeyAwsObjectRequest(string bucketName,
+        string key,
         bool preSignedUrl = false,
         int? preSignedUrlExpires = null)
     {
         BucketName = bucketName;
+        _key = key;
         PreSignedUrl = preSignedUrl;
         PreSignedUrlExpires = preSignedUrlExpires;
     }
 
     public string BucketName { get; }
 
-    public bool PreSignedUrl { get; }
+    public string Key => Uri.UnescapeDataString(Key);
 
-    public int? PreSignedUrlExpires { get; }
+    public bool PreSignedUrl { get; set; }
+
+    public int? PreSignedUrlExpires { get; set; }
 }

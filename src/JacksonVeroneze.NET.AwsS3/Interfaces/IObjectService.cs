@@ -9,8 +9,8 @@ public interface IObjectService
         GetAllAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 
-    Task<S3Object> GetByIdAsync(
-        GetByIdAwsObjectRequest request,
+    Task<S3Object> GetByKeyAsync(
+        GetByKeyAwsObjectRequest request,
         CancellationToken cancellationToken = default);
 
     Task CreateAsync(

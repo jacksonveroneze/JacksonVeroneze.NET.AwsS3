@@ -1,7 +1,6 @@
 using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Util;
-using JacksonVeroneze.NET.AwsS3.Entities;
 using JacksonVeroneze.NET.AwsS3.Extensions;
 using JacksonVeroneze.NET.AwsS3.Interfaces;
 using JacksonVeroneze.NET.AwsS3.Models.Bucket;
@@ -27,68 +26,119 @@ public class BucketService : IBucketService
         GetAllAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(request, nameof(request));
-       
-        ListBucketsRequest requestAws = new();
+        ArgumentNullException.ThrowIfNull(request);
 
-        ListBucketsResponse result = await _s3Client
-            .ListBucketsAsync(requestAws, cancellationToken);
+        try
+        {
+            ListBucketsRequest requestAws = new();
 
-        ICollection<S3Bucket> buckets =
-            result.Buckets.Select(bucket => new S3Bucket(
+            ListBucketsResponse result = await _s3Client
+                .ListBucketsAsync(requestAws, cancellationToken);
+
+            ICollection<S3Bucket> buckets = result.Buckets
+                .Select(bucket => new S3Bucket(
                     bucket.BucketName, bucket.CreationDate))
                 .ToArray();
 
-        _logger.LogGetAll(nameof(BucketService),
-            nameof(GetAllAsync), buckets.Count);
+            _logger.LogGetAllBuckets(nameof(BucketService),
+                nameof(GetAllAsync), buckets.Count);
 
-        return buckets;
+            return buckets;
+        }
+        catch (AmazonS3Exception ex)
+        {
+            _logger.LogGenericError(nameof(BucketService),
+                nameof(CreateAsync), ex);
+
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogGenericError(nameof(BucketService),
+                nameof(CreateAsync), ex);
+
+            throw;
+        }
     }
 
     public async Task CreateAsync(
         CreateAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(request, nameof(request));
-        
-        // Validar bucket name
-        
-        PutBucketRequest requestAws = new()
+        ArgumentNullException.ThrowIfNull(request);
+
+        try
         {
-            BucketName = request.Name,
-            UseClientRegion = true
-        };
+            // Validar bucket name
 
-        await _s3Client.PutBucketAsync(
-            requestAws, cancellationToken);
+            PutBucketRequest requestAws = new()
+            {
+                BucketName = request.Name,
+                UseClientRegion = true
+            };
 
-        _logger.LogCreateBucket(nameof(BucketService),
-            nameof(CreateAsync), request.Name);
+            await _s3Client.PutBucketAsync(
+                requestAws, cancellationToken);
+
+            _logger.LogCreateBucket(nameof(BucketService),
+                nameof(CreateAsync), request.Name);
+        }
+        catch (AmazonS3Exception ex)
+        {
+            _logger.LogGenericError(nameof(BucketService),
+                nameof(CreateAsync), ex);
+
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogGenericError(nameof(BucketService),
+                nameof(CreateAsync), ex);
+
+            throw;
+        }
     }
 
     public async Task DeleteAsync(
         DeleteAwsBucketRequest request,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(request, nameof(request));
-        
-        DeleteBucketRequest requestAws = new()
+        ArgumentNullException.ThrowIfNull(request);
+
+        try
         {
-            BucketName = request.Name,
-            UseClientRegion = true
-        };
+            DeleteBucketRequest requestAws = new()
+            {
+                BucketName = request.Name,
+                UseClientRegion = true
+            };
 
-        await _s3Client.DeleteBucketAsync(
-            requestAws, cancellationToken);
+            await _s3Client.DeleteBucketAsync(
+                requestAws, cancellationToken);
 
-        _logger.LogDeleteBucket(nameof(BucketService),
-            nameof(DeleteAsync), request.Name);
+            _logger.LogDeleteBucket(nameof(BucketService),
+                nameof(DeleteAsync), request.Name);
+        }
+        catch (AmazonS3Exception ex)
+        {
+            _logger.LogGenericError(nameof(BucketService),
+                nameof(CreateAsync), ex);
+
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogGenericError(nameof(BucketService),
+                nameof(CreateAsync), ex);
+
+            throw;
+        }
     }
 
     public async Task<bool> ExistsAsync(string name)
     {
         ArgumentException.ThrowIfNullOrEmpty(name, nameof(name));
-        
+
         bool exists = await AmazonS3Util
             .DoesS3BucketExistV2Async(_s3Client, name);
 
