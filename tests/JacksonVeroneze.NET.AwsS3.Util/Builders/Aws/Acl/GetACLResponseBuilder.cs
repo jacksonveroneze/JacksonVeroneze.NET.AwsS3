@@ -4,7 +4,7 @@ using Amazon.S3.Model;
 namespace JacksonVeroneze.NET.AwsS3.Util.Builders.Aws.Acl;
 
 [ExcludeFromCodeCoverage]
-public static class GetACLResponseBuilder
+public static class GetAclResponseBuilder
 {
     public static GetACLResponse BuildSingle(
         HttpStatusCode statusCode = HttpStatusCode.OK)

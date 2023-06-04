@@ -14,6 +14,8 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services,
         Action<AwsS3ServiceConfiguration> config)
     {
+        ArgumentNullException.ThrowIfNull(config);
+
         AwsS3ServiceConfiguration conf = new();
 
         config.Invoke(conf);

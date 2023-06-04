@@ -33,7 +33,8 @@ public class BucketService : IBucketService
             ListBucketsRequest requestAws = new();
 
             ListBucketsResponse result = await _s3Client
-                .ListBucketsAsync(requestAws, cancellationToken);
+                .ListBucketsAsync(requestAws, cancellationToken)
+                .ConfigureAwait(false);
 
             ICollection<S3Bucket> buckets = result.Buckets
                 .Select(bucket => new S3Bucket(
@@ -77,8 +78,9 @@ public class BucketService : IBucketService
                 UseClientRegion = true
             };
 
-            await _s3Client.PutBucketAsync(
-                requestAws, cancellationToken);
+            await _s3Client
+                .PutBucketAsync(requestAws, cancellationToken)
+                .ConfigureAwait(false);
 
             _logger.LogCreateBucket(nameof(BucketService),
                 nameof(CreateAsync), request.Name);
@@ -113,8 +115,9 @@ public class BucketService : IBucketService
                 UseClientRegion = true
             };
 
-            await _s3Client.DeleteBucketAsync(
-                requestAws, cancellationToken);
+            await _s3Client
+                .DeleteBucketAsync(requestAws, cancellationToken)
+                .ConfigureAwait(false);
 
             _logger.LogDeleteBucket(nameof(BucketService),
                 nameof(DeleteAsync), request.Name);
@@ -137,10 +140,11 @@ public class BucketService : IBucketService
 
     public async Task<bool> ExistsAsync(string name)
     {
-        ArgumentException.ThrowIfNullOrEmpty(name, nameof(name));
+        ArgumentException.ThrowIfNullOrEmpty(name);
 
         bool exists = await AmazonS3Util
-            .DoesS3BucketExistV2Async(_s3Client, name);
+            .DoesS3BucketExistV2Async(_s3Client, name)
+            .ConfigureAwait(false);
 
         _logger.LogExistsBucket(nameof(BucketService),
             nameof(ExistsAsync), name, exists);

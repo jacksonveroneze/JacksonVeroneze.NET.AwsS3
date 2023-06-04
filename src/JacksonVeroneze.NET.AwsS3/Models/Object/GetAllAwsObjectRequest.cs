@@ -7,7 +7,7 @@ public class GetAllAwsObjectRequest
     public bool PreSignedUrl { get; }
 
     public int? PreSignedUrlExpires { get; }
-    
+
     public GetAllAwsObjectRequest(
         string bucketName,
         bool preSignedUrl = false,

@@ -17,7 +17,7 @@ public sealed class AwsS3ServiceConfiguration
         get => _awsOptions;
         set
         {
-            ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
+            ArgumentNullException.ThrowIfNull(LocalMode);
             Guard.Argument(LocalMode).False();
 
             _awsOptions = value;
@@ -37,7 +37,7 @@ public sealed class AwsS3ServiceConfiguration
         get => _awsRegion;
         set
         {
-            ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
+            ArgumentNullException.ThrowIfNull(LocalMode);
             Guard.Argument(LocalMode).True();
 
             _awsRegion = value;
@@ -49,7 +49,7 @@ public sealed class AwsS3ServiceConfiguration
         get => _serviceUrl;
         set
         {
-            ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
+            ArgumentNullException.ThrowIfNull(LocalMode);
             Guard.Argument(LocalMode).True();
 
             _serviceUrl = value;
@@ -61,7 +61,7 @@ public sealed class AwsS3ServiceConfiguration
         get => _forcePathStyle;
         set
         {
-            ArgumentNullException.ThrowIfNull(LocalMode, nameof(LocalMode));
+            ArgumentNullException.ThrowIfNull(LocalMode);
             Guard.Argument(LocalMode).True();
 
             _forcePathStyle = value;

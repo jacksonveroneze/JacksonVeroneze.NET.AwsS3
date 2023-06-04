@@ -40,7 +40,7 @@ public class BucketServiceTests
     [Fact(DisplayName = nameof(BucketService)
                         + nameof(BucketService.GetAllAsync)
                         + "return data")]
-    public async Task GetAllAsync_ReturnData()
+    public async Task GetAllAsync_ReturnDataAsync()
     {
         // -------------------------------------------------------
         // Arrange
@@ -66,7 +66,8 @@ public class BucketServiceTests
         // Act
         // -------------------------------------------------------
         ICollection<S3Bucket> result = await _service
-            .GetAllAsync(request);
+            .GetAllAsync(request)
+            .ConfigureAwait(false);
 
         // -------------------------------------------------------
         // Assert
@@ -91,7 +92,7 @@ public class BucketServiceTests
     [Fact(DisplayName = nameof(BucketService)
                         + nameof(BucketService.CreateAsync)
                         + "create sucess")]
-    public async Task CreateAsync_Sucess()
+    public async Task CreateAsync_SucessAsync()
     {
         // -------------------------------------------------------
         // Arrange
@@ -116,7 +117,8 @@ public class BucketServiceTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        await _service.CreateAsync(request);
+        await _service.CreateAsync(request)
+            .ConfigureAwait(false);
 
         // -------------------------------------------------------
         // Assert
@@ -137,7 +139,7 @@ public class BucketServiceTests
     [Fact(DisplayName = nameof(BucketService)
                         + nameof(BucketService.DeleteAsync)
                         + "delete sucess")]
-    public async Task DeleteAsync_Sucess()
+    public async Task DeleteAsync_SucessAsync()
     {
         // -------------------------------------------------------
         // Arrange
@@ -183,14 +185,14 @@ public class BucketServiceTests
     [Fact(DisplayName = nameof(BucketService)
                         + nameof(BucketService.ExistsAsync)
                         + "exists true - success")]
-    public async Task Exists_True_Sucess()
+    public async Task Exists_True_SucessAsync()
     {
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
         string bucketName = Guid.NewGuid().ToString();
 
-        GetACLResponse expected = GetACLResponseBuilder.BuildSingle();
+        GetACLResponse expected = GetAclResponseBuilder.BuildSingle();
 
         _mockAmazonS3.Setup(mock =>
                 mock.GetACLAsync(
@@ -226,7 +228,7 @@ public class BucketServiceTests
     [Fact(DisplayName = nameof(BucketService)
                         + nameof(BucketService.ExistsAsync)
                         + "exists false - success")]
-    public async Task Exists_False_Sucess()
+    public async Task Exists_False_SucessAsync()
     {
         // -------------------------------------------------------
         // Arrange

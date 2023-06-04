@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Amazon.S3.Model;
 
 namespace JacksonVeroneze.NET.AwsS3.Util.Builders.Aws.Bucket;
@@ -8,10 +9,7 @@ public static class S3BucketBuilder
     public static ICollection<S3Bucket> BuildMany(
         int? qtde = null)
     {
-        if (qtde is null)
-        {
-            qtde = new Random().Next(1, 20);
-        }
+        qtde ??= RandomNumberGenerator.GetInt32(5, 10);
 
         return Factory().Generate(qtde.Value);
     }

@@ -15,13 +15,7 @@ public class AwsS3ServiceConfigurationTests
         // -------------------------------------------------------
         // Arrange && Act
         // -------------------------------------------------------
-        Action action = () =>
-        {
-            AwsS3ServiceConfiguration _ = new()
-            {
-                AwsOptions = new AWSOptions()
-            };
-        };
+        Action action = () => { };
 
         // -------------------------------------------------------
         // Assert
@@ -39,7 +33,7 @@ public class AwsS3ServiceConfigurationTests
         // -------------------------------------------------------
         Action action = () =>
         {
-            AwsS3ServiceConfiguration _ = new()
+            new AwsS3ServiceConfiguration()
             {
                 LocalMode = true,
                 AwsOptions = new AWSOptions()

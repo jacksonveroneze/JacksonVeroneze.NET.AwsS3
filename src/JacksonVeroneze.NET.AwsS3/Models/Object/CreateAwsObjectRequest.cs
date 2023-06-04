@@ -15,7 +15,7 @@ public class CreateAwsObjectRequest
     public IDictionary<string, string> Tags { get; }
 
     public string Key => $"{Prefix}/{Name}";
-    
+
     public CreateAwsObjectRequest(string bucketName,
         string prefix, string name, MemoryStream content,
         IDictionary<string, string> metadata,

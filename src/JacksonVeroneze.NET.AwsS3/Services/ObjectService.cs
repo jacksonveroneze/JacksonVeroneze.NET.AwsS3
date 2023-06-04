@@ -33,7 +33,8 @@ public class ObjectService : IObjectService
                 new() { BucketName = request.BucketName };
 
             ListObjectsV2Response result = await _s3Client
-                .ListObjectsV2Async(requestAws, cancellationToken);
+                .ListObjectsV2Async(requestAws, cancellationToken)
+                .ConfigureAwait(false);
 
             ICollection<S3Object> objects = result.S3Objects
                 .Select(item =>
@@ -81,8 +82,9 @@ public class ObjectService : IObjectService
                 Key = request.Key
             };
 
-            GetObjectResponse result = await _s3Client.GetObjectAsync(
-                requestAws, cancellationToken);
+            GetObjectResponse result = await _s3Client
+                .GetObjectAsync(requestAws, cancellationToken)
+                .ConfigureAwait(false);
 
             string? url = !request.PreSignedUrl
                 ? null
@@ -137,8 +139,9 @@ public class ObjectService : IObjectService
                 requestAws.TagSet.Add(new Tag { Key = item.Key, Value = item.Value });
             }
 
-            await _s3Client.PutObjectAsync(
-                requestAws, cancellationToken);
+            await _s3Client
+                .PutObjectAsync(requestAws, cancellationToken)
+                .ConfigureAwait(false);
 
             _logger.LogCreateObject(nameof(BucketService),
                 nameof(DeleteAsync), request.BucketName, request.Key);
@@ -173,8 +176,9 @@ public class ObjectService : IObjectService
                 Key = request.Key
             };
 
-            await _s3Client.DeleteObjectAsync(
-                requestAws, cancellationToken);
+            await _s3Client
+                .DeleteObjectAsync(requestAws, cancellationToken)
+                .ConfigureAwait(false);
 
             _logger.LogDeleteObject(nameof(BucketService),
                 nameof(DeleteAsync), request.BucketName, request.Key);

@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using JacksonVeroneze.NET.AwsS3.Entities;
 
 namespace JacksonVeroneze.NET.AwsS3.Util.Builders.Entities.Bucket;
@@ -13,7 +14,7 @@ public static class S3BucketBuilder
     public static ICollection<S3Bucket> BuildMany(
         int? qtde = null)
     {
-        qtde ??= new Random().Next(1, 100);
+        qtde ??= RandomNumberGenerator.GetInt32(5, 10);
 
         return Factory().Generate(qtde.Value);
     }

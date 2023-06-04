@@ -5,7 +5,7 @@ public class S3Object
     public string Name { get; }
 
     public string? Url { get; }
-    
+
     public S3Object(string name, string? url = null)
     {
         Name = name;
